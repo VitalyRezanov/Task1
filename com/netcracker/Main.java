@@ -34,28 +34,5 @@ public class Main {
 //        System.out.println(book);
 //        System.out.println(book.getAuthorNames());
 // *******************************************************************
-//        Circle circle = new Circle("yellow", 2.0);
-//
-//        Circle cylinder = new Cylinder(2.0, "black", 5.0);
-//        cylinder.myCircle();
-//        System.out.println(circle instanceof Circle);
-//        System.out.println(circle instanceof Cylinder);
-//        System.out.println(circle instanceof Object);
-//
-//        System.out.println("==========================");
-//
-//        System.out.println(cylinder instanceof Circle);
-//        System.out.println(cylinder instanceof Cylinder);
-//        System.out.println(cylinder instanceof Object);
-//
-//        System.out.println("==========================");
-//
-//        System.out.println(null instanceof Circle);
-//        System.out.println(null instanceof Cylinder);
-//        System.out.println(null instanceof Object);
-//
-//    }
-//    public static void printArea(Circle figure){
-//        System.out.println("figure area: " + figure.calculateArea());
     }
 }
