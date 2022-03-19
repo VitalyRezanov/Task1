@@ -29,13 +29,15 @@ public class MyTriangle {
         return v1.distance(v2) + v2.distance(v3) + v3.distance(v1);
     }
     public String getType() {
-        double side1 = v1.distance(v2);
-        double side2 = v2.distance(v3);
-        double side3 = v3.distance(v1);
-        if (side1 == side2 && side2 == side3) {
+
+        Double side1 = new Double(v1.distance(v2));
+        Double side2 = new Double(v2.distance(v3));
+        Double side3 = new Double(v3.distance(v1));
+
+        if (side1.compareTo(side2) == 0 && side2.compareTo(side3) == 0) {
             return "Equilateral";
         }
-        else if (side1 == side2 || side1 == side3 || side2 == side3) {
+        else if (side1.compareTo(side2) == 0 || side1.compareTo(side3) == 0 || side2.compareTo(side3) == 0) {
             return "Isosceles";
         }
         else {
