@@ -1,6 +1,5 @@
 package com.netcracker;
 
-import com.netcracker.figures.*;
 import com.netcracker.figures.Circle;
 import com.netcracker.figures.Rectangle;
 import com.netcracker.tasks.*;
