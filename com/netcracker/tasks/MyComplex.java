@@ -1,8 +1,10 @@
 package com.netcracker.tasks;
 
+
 public class MyComplex {
     private double real = 0.0;
     private double img = 0.0;
+    public static double epsilon = 0.000000000001;
 
     public MyComplex() {
     }
@@ -39,15 +41,15 @@ public class MyComplex {
     }
 
     public boolean isReal() {
-        return real != 0.0? true :false;
+        return Math.abs(real) < epsilon;
     }
 
     public boolean isImaginary() {
-        return img != 0.0? true :false;
+        return Math.abs(img) < epsilon;
     }
 
     public boolean equals(double real, double imag) {
-        return this.real == real && this.img == imag ? true: false;
+        return (Math.abs(this.real - real) < epsilon) && (Math.abs(this.img - imag)) < epsilon;
     }
 
     public boolean equals(MyComplex another) {
@@ -58,39 +60,28 @@ public class MyComplex {
         return Math.sqrt(Math.pow(real, 2) + Math.pow(img, 2));
     }
 
-    public double argument() {
+    public double argument1() {
         double arg = 0.0;
-        if(real > 0 && img >= 0) {
-            if(img==0){
-                arg = 0.0;
-            }
-            else{
-                arg = Math.atan(img/real);
-            }
+        if(real > 0 && img > 0) {
+            arg = Math.atan(img/real);
         }
-        else if(real <= 0 && img > 0) {
-            if(real == 0) {
-                arg = Math.PI/2;
-            }
-            else {
-                arg = Math.PI - Math.atan(img/real);
-            }
+        else if (real > 0 && img < 0) {
+            arg = -Math.atan(img/real);
         }
-        else if(real < 0 && img <= 0) {
-            if(img == 0) {
-                arg = Math.PI;
-            }
-            else {
-                arg = Math.atan(img/real) - Math.PI;
-            }
+        if (real < 0 && img > 0) {
+            arg = Math.PI - Math.atan(img/real);
         }
-        else if(real >= 0 && img < 0) {
-            if(real == 0) {
-                arg = -Math.PI;
-            }
-            else {
-                arg = -Math.atan(img/real);
-            }
+        else if (real < 0 && img < 0) {
+            arg = Math.atan(img/real) - Math.PI;
+        }
+        else if (real < 0 && this.isImaginary()) {
+            arg = Math.PI;
+        }
+        if (this.isReal() && img > 0)  {
+            arg = Math.PI/2;
+        }
+        else if (this.isReal() && img < 0) {
+            arg = -Math.PI;
         }
         return arg;
     }
