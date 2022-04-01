@@ -4,7 +4,7 @@ package com.netcracker.tasks;
 public class MyComplex {
     private double real = 0.0;
     private double img = 0.0;
-    public static double epsilon = 0.000000000001;
+    private static double epsilon = 0.000000000001;
 
     public MyComplex() {
     }
@@ -12,6 +12,24 @@ public class MyComplex {
     public MyComplex(double real, double img) {
         this.real = real;
         this.img = img;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // main object is argument func equals
+        if (o == null || getClass() != o.getClass()) return false; // argument object is not null OR types main object and argument not equals
+        MyComplex myComplex = (MyComplex) o; // create new reference and downcast argument
+        return Double.compare(myComplex.real, real) == 0 && Double.compare(myComplex.img, img) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 31 * result + (int)(Double.doubleToLongBits(real) ^ (Double.doubleToLongBits(real) >>> 32));
+        result = 31 * result + (int)(Double.doubleToLongBits(img) ^ (Double.doubleToLongBits(img) >>> 32));
+
+        return result;
     }
 
     public double getReal() {
@@ -41,11 +59,11 @@ public class MyComplex {
     }
 
     public boolean isReal() {
-        return Math.abs(real) < epsilon;
+        return Math.abs(real) > epsilon;
     }
 
     public boolean isImaginary() {
-        return Math.abs(img) < epsilon;
+        return Math.abs(img) > epsilon;
     }
 
     public boolean equals(double real, double imag) {
@@ -60,7 +78,7 @@ public class MyComplex {
         return Math.sqrt(Math.pow(real, 2) + Math.pow(img, 2));
     }
 
-    public double argument1() {
+    public double argument() {
         double arg = 0.0;
         if(real > 0 && img > 0) {
             arg = Math.atan(img/real);
@@ -74,13 +92,13 @@ public class MyComplex {
         else if (real < 0 && img < 0) {
             arg = Math.atan(img/real) - Math.PI;
         }
-        else if (real < 0 && this.isImaginary()) {
+        else if (real < 0 && !(this.isImaginary())) {
             arg = Math.PI;
         }
-        if (this.isReal() && img > 0)  {
+        if (!(this.isReal()) && img > 0)  {
             arg = Math.PI/2;
         }
-        else if (this.isReal() && img < 0) {
+        else if (!(this.isReal()) && img < 0) {
             arg = -Math.PI;
         }
         return arg;

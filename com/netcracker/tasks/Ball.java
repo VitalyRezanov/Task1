@@ -1,5 +1,7 @@
 package com.netcracker.tasks;
 
+import java.util.Objects;
+
 public class Ball {
 
     private double x;
@@ -14,6 +16,28 @@ public class Ball {
         this.radius = radius;
         this.xDelta = speed * Math.cos(direction);
         this.yDelta = -speed * Math.sin(direction);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ball ball = (Ball) o;
+        return Double.compare(ball.x, x) == 0 && Double.compare(ball.y, y) == 0 && radius == ball.radius
+                && Double.compare(ball.xDelta, xDelta) == 0 && Double.compare(ball.yDelta, yDelta) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 31 * result + (int)(Double.doubleToLongBits(x) ^ (Double.doubleToLongBits(x) >>> 32));
+        result = 31 * result + (int)(Double.doubleToLongBits(y) ^ (Double.doubleToLongBits(y) >>> 32));
+        result = 31 * result + radius;
+        result = 31 * result + (int)(Double.doubleToLongBits(xDelta) ^ (Double.doubleToLongBits(xDelta) >>> 32));
+        result = 31 * result + (int)(Double.doubleToLongBits(yDelta) ^ (Double.doubleToLongBits(yDelta) >>> 32));
+
+        return result;
     }
 
     public double getX() {

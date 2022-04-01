@@ -1,5 +1,8 @@
 package com.netcracker.tasks;
 
+import com.sun.jdi.ArrayReference;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MyPolynomial {
@@ -13,10 +16,33 @@ public class MyPolynomial {
         return coeffs.length;
     }
 
+    public static double[] reverseArray(double[] array) {
+
+        double[] tempArray = new double[array.length];
+
+        for (int i = 0; i < array.length; ++i) {
+            tempArray[i] = array[array.length - i - 1];
+        }
+        return tempArray;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyPolynomial that = (MyPolynomial) o;
+        return Arrays.equals(coeffs, that.coeffs);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(coeffs);
+    }
+
     @Override
     public String toString() {
         return "MyPolynomial{" +
-                "coeffs=" + Arrays.toString(coeffs) +
+                "coeffs=" + Arrays.toString(reverseArray(coeffs)) +
                 '}';
     }
 
