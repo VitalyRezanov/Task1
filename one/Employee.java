@@ -1,4 +1,4 @@
-package com.netcracker.tasks;
+package com.netcracker.tasks.one;
 
 import java.util.Objects;
 

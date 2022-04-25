@@ -1,8 +1,5 @@
-package com.netcracker.tasks;
+package com.netcracker.tasks.one;
 
-import com.sun.jdi.ArrayReference;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MyPolynomial {

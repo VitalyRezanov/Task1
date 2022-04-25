@@ -1,4 +1,4 @@
-package com.netcracker.tasks;
+package com.netcracker.tasks.one;
 
 import java.util.Objects;
 
@@ -12,6 +12,7 @@ public class Author {
         this.email = email;
         this.gender = gender;
     }
+
 
     @Override
     public boolean equals(Object o) {

@@ -1,6 +1,4 @@
-package com.netcracker.tasks;
-
-import java.util.Objects;
+package com.netcracker.tasks.one;
 
 public class Ball {
 

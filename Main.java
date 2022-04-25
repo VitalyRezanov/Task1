@@ -2,7 +2,7 @@ package com.netcracker;
 
 import com.netcracker.figures.Circle;
 import com.netcracker.figures.Rectangle;
-import com.netcracker.tasks.*;
+import com.netcracker.tasks.one.*;
 
 public class Main {
     public static void main(String[] args) {

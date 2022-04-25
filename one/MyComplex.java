@@ -1,4 +1,4 @@
-package com.netcracker.tasks;
+package com.netcracker.tasks.one;
 
 
 public class MyComplex {
@@ -17,7 +17,7 @@ public class MyComplex {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true; // main object is argument func equals
-        if (o == null || getClass() != o.getClass()) return false; // argument object is not null OR types main object and argument not equals
+        if (o == null || getClass() != o.getClass()) return false; // argument object is null OR types main object and argument not equals
         MyComplex myComplex = (MyComplex) o; // create new reference and downcast argument
         return Double.compare(myComplex.real, real) == 0 && Double.compare(myComplex.img, img) == 0;
     }
